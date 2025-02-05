@@ -1,6 +1,8 @@
 package com.example.projetofinal
+
 import android.content.Intent
 import android.os.Bundle
+import android.view.View
 import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
@@ -10,6 +12,11 @@ import com.google.firebase.auth.FirebaseAuth
 class MainActivity : AppCompatActivity() {
 
     private lateinit var auth: FirebaseAuth
+    private lateinit var emailEditText: EditText
+    private lateinit var senhaEditText: EditText
+    private lateinit var loginButton: Button
+    private lateinit var registerButton: Button
+    private lateinit var erroTextView: TextView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -17,11 +24,11 @@ class MainActivity : AppCompatActivity() {
 
         auth = FirebaseAuth.getInstance()
 
-        val emailEditText: EditText = findViewById(R.id.emailEditText)
-        val senhaEditText: EditText = findViewById(R.id.senhaEditText)
-        val loginButton: Button = findViewById(R.id.loginButton)
-        val registerButton: Button = findViewById(R.id.registerButton)
-        val erroTextView: TextView = findViewById(R.id.erroTextView)
+        emailEditText = findViewById(R.id.emailEditText)
+        senhaEditText = findViewById(R.id.senhaEditText)
+        loginButton = findViewById(R.id.loginButton)
+        registerButton = findViewById(R.id.registerButton)
+        erroTextView = findViewById(R.id.erroTextView)
 
         loginButton.setOnClickListener {
             val email = emailEditText.text.toString()
@@ -45,9 +52,11 @@ class MainActivity : AppCompatActivity() {
             }
         }
 
-        registerButton.setOnClickListener {
-            val intent = Intent(this, RegisterActivity::class.java)
-            startActivity(intent)
-        }
     }
+
+    fun registerButtonOnClick(view: View) {
+        val intent = Intent(this, RegisterActivity::class.java)
+        startActivity(intent)
+    }
+
 }

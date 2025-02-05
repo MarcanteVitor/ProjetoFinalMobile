@@ -30,7 +30,8 @@
         android:id="@+id/registerButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Criar Conta"/>
+        android:text="Criar Conta"
+        android:onClick="registerButtonOnClick"/>
 
     <TextView
         android:id="@+id/erroTextView"

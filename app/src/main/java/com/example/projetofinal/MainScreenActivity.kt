@@ -2,6 +2,7 @@ package com.example.projetofinal
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.widget.Button
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
@@ -20,6 +21,7 @@ class MainScreenActivity : AppCompatActivity() {
         val logoutButton: Button = findViewById(R.id.logoutButton)
 
         val user = auth.currentUser
+        Log.v("teste", user.toString())
         if (user != null) {
             userEmailTextView.text = "Logado como: ${user.email}"
         } else {

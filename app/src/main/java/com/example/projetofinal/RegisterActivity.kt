@@ -2,6 +2,7 @@ package com.example.projetofinal
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.widget.Button
 import android.widget.EditText
@@ -29,16 +30,25 @@ class RegisterActivity : AppCompatActivity() {
     }
 
     fun btCadastrarOnClick(view: View) {
+        Log.v("teste", emailEditText.text.toString())
 
-        var email = emailEditText.toString()
-        var senha = senhaEditText.toString()
-        var senhaConfirm = senhaConfirmEditText.toString()
+
+        var email = emailEditText.text.toString()
+        var senha = senhaEditText.text.toString()
+        var senhaConfirm = senhaConfirmEditText.text.toString()
 
         if(email.isEmpty() || senha.isEmpty() || senhaConfirm.isEmpty()){
             erroTextView.text = "Todos os campos devem estar preenchidos!"
             erroTextView.visibility = TextView.VISIBLE
             return
         }
+
+        if(senha.length < 6){
+            erroTextView.text = "Senha deve ter no mínimo 6 caracteres!"
+            erroTextView.visibility = TextView.VISIBLE
+            return
+        }
+
 
         if(senha != senhaConfirm){
             erroTextView.text = "Senhas diferentes!"
